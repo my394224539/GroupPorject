@@ -1,0 +1,45 @@
+       <div class="container">
+          <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                      <th style="width:50%">Product</th>
+                      <th style="width:10%">Price</th>
+                      <th style="width:8%">Quantity</th>
+                      <th style="width:22%" class="text-center">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each model as |carts|}}
+                    <tr>                
+                      <td data-th="Product">
+                        <div class="row">
+                          <div class="col-sm-2"><img src='{{carts.image_url}}' alt="product" class="small-picture"/></div>
+                          <div class="col-sm-10">
+                            <h4>{{carts.item_name}}</h4>
+                          </div>
+                        </div>
+                      </td>
+                      <td data-th="Price">${{carts.price}}</td>
+                    
+                      <td data-th="Quantity">
+                        <Input @type="number" class="form-control text-center"  @min="1" @value={{carts.quantity}} onchange={{action "onQuantityChange" carts this.total}} />
+                      </td>
+                      <td data-th="Subtotal" class="text-center" id="subtotal" >${{carts.subtotal}}</td>    
+                        <td><button class="btn btn-outline-danger" {{action "delete" carts}}>Remove</button></td>
+                    </tr>
+                    {{else}}
+                         <p><h2>There is nothing in the cart</h2></p>
+                    {{/each}}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td><LinkTo @route='catalog' class="btn btn-outline-warning">Continue Shopping</LinkTo></td>
+                      <td colspan="2"></td>
+                      <td class="text-center"><strong>Total ${{this.totalmoney}}</strong></td>
+                      <td><LinkTo @route='checkout' class="btn btn-outline-success">Checkout</LinkTo></td>
+                    </tr>
+                  </tfoot>
+                </table>
+        </div>
+
+{{outlet}}

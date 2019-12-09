@@ -1,0 +1,17 @@
+<div class="row" style="padding: 30px;">
+{{#each model as |item|}}
+<div class="col-sm-4 bs-component">
+    <div class="card-deck border-primary mb-3" style="max-width: 30rem;">
+        <div class="card">
+        <img src='{{item.image_url}}' class="card-img-top" alt='image'>
+        <div class="card-body">
+        <h5 class="card-title">{{item.item_name}}</h5>
+        <p class="card-text">price:${{item.price}}</p>
+        <button {{action "ATC" item}} type="button" class="btn btn-primary">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}
+</div>
+{{outlet}}

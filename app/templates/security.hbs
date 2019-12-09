@@ -1,0 +1,20 @@
+      <form style="padding: 30px;">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="itemName">item name</label>
+              <Input  type="text" class="form-control" id="itemName" placeholder="Enter your item name" required="required" @value={{item_name}} />
+            </div></div>
+            <div class="row">
+            <div class="col-md-4">
+              <label for="imageURL">image URL</label>
+              <Input  type="text" class="form-control" id="imageURL" placeholder="Enter your image URL" required="required" @value={{image_url}} />
+            </div></div>
+            <div class="row">
+            <div class="col-md-4">
+              <label for="price">price</label>
+              <Input  type="text" class="form-control" id="price" placeholder="Enter your price" required="required" @value={{price}} />
+            </div></div><br>
+                <button class="btn btn-outline-primary" {{action "inject"}}>Inject</button>
+                <button class="btn btn-outline-danger" {{action "delete"}}>Delete</button>
+          </form>
+{{outlet}}

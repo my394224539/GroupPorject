@@ -1,5 +1,22 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li><LinkTo  @route='index' class="navbar-brand"><img src='/images/Home.png' alt="Home">Home</LinkTo></li>
+                <li><LinkTo  @route='about' class="navbar-brand"><img src='/images/About.png' alt="About">About</LinkTo></li>
+                <li><LinkTo  @route='catalog' class="navbar-brand"><img src='/images/Catalog.png' alt="Catalog">Catalog</LinkTo></li>
+                <li><LinkTo  @route='cart' class="navbar-brand"><img src='/images/Cart.png' alt="Cart">Cart</LinkTo></li>
+                <li><LinkTo  @route='checkout' class="navbar-brand"><img src='/images/Checkout.png' alt="Check out">Check out</LinkTo></li>
+                <li><LinkTo  @route='security' class="navbar-brand"><img src='/images/security.png' alt="security">Security</LinkTo></li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                  {{#if session.isAuthenticated}}
+                        Logged in as {{ session.data.authenticated.user.displayName }}
+                        <button class="sign-out btn btn-outline-dark my-2 mr-sm-2" {{action "logout"}}>Sign out</button>
+                  {{else}}
+                        <button class="sign-in btn btn-outline-dark my-2 mr-sm-2" {{action "login" }}>Sign in with Google</button>
+                  {{/if}}
+              </form>
+          </div>
+        </nav>
 
 {{outlet}}
